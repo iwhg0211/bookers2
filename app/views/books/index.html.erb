@@ -4,9 +4,9 @@
             <h1>User info</h1>
 
             <% if @user.profile_image.attached? %>
-             <%= image_tag @user.profile_image, size: "200×200" %>
+             <%= image_tag @user.profile_image, size: "100×100" %>
             <% else %>
-             <%= image_tag 'no_image', size: "200×200" %>
+             <%= image_tag 'no_image', size: "100×100" %>
             <% end %>
 
             <p><%= @user.name %></p>
@@ -45,7 +45,7 @@
               <% @books.each do |book| %>
               <tr>
                <td><%= link_to user_path(@user) do %>
-                     <%= image_tag @user.get_profile_image(200,200) %>
+                     <%= image_tag @user.get_profile_image(100,100) %>
                     <% end %>
                </td>
                <td><%= book.title %></td>

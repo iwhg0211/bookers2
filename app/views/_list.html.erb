@@ -1,0 +1,30 @@
+<h1>User info</h1>
+
+            <% if user.profile_image.attached? %>
+             <%= image_tag user.profile_image, size: "100×100" %>
+            <% else %>
+             <%= image_tag 'no_image', size: "100×100" %>
+            <% end %>
+
+            <p><%= user.name %></p>
+
+            <p><%= user.introduction %></p>
+
+            <%= link_to 'edit', edit_user_path(user.id) %>
+
+
+            <h1>New Book</h1>
+
+            <%= form_with model: book, url: books_path do |f| %>
+
+            <label>Title</label>
+            <%= f.text_field :text %>
+
+            <label>Opinion</label>
+            <%= f.text_field :opinion %>
+
+            <%= f.submit 'Create Book',class:"btn btn-success" %>
+
+            <% end %>
+
+        </div>
