@@ -21,10 +21,10 @@
             <%= form_with model: @book, url: books_path do |f| %>
 
             <label>Title</label>
-            <%= f.text_field :text %>
+            <%= f.text_field :title %>
 
             <label>Opinion</label>
-            <%= f.text_field :opinion %>
+            <%= f.text_field :body %>
 
             <%= f.submit 'Create Book',class:"btn btn-success" %>
 
@@ -48,9 +48,8 @@
                      <%= image_tag @user.get_profile_image(100,100) %>
                     <% end %>
                </td>
-               <td><%= book.title %></td>
-               <td><%= link_to @book.title, book_path(book) %></td><%# コメントアウト >test1て投稿したのに	/books/1と表示される<% end %>
-               <td><%= @book.body %></td><%# コメントアウト >何も表示されない<% end %>
+               <td><%= link_to book.title, book_path(book) %></td><%# コメントアウト >test1て投稿したのに	/books/1と表示される<% end %>
+               <td><%= book.body %></td><%# コメントアウト >何も表示されない<% end %>
               </tr>
               <% end %>
              </tbody>
