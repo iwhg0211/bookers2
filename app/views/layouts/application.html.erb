@@ -12,10 +12,13 @@
 
   <body>
     <header>
-        <%= link_to "Bookers", root_path %>
+     <div class="d-flex justify-content-start">
+　　  <%= link_to "Bookers", root_path %>
+　　 </div>
+　　 <div class="d-flex justify-content-end">
       <% if user_signed_in? %>
        <li>
-         <%= link_to "Home", root_path %>
+         <%= link_to "Home", user_path(current_user.id) %>
        </li>
        <li>
          <%= link_to "Users", users_path %>
@@ -40,6 +43,8 @@
         <%= link_to "Log in", new_user_session_path %>
        </li>
       <% end %>
+      </div>
+     <%= flash[:notice] %>
     </header>
     <%= yield %>
     <footer>

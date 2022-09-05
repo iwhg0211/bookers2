@@ -1,12 +1,12 @@
 <div class="container">
     <div class="row">
-       <div class="col-lg-3">
+       <div class="col-md-3">
 
             <%= render 'users/list', user: @user %>
 
-            <h1>New Book</h1>
+            <h1>New book</h1>
 
-            <%= form_with model: @book, url: books_path do |f| %>
+            <%= form_with model: @book_new, url: books_path do |f| %>
 
             <p>Title</p>
             <%= f.text_field :title %>
@@ -19,7 +19,7 @@
             <% end %>
 
        </div>
-       <div class="col-lg-8">
+       <div class="col-md-8 offset-md-1">
             <h1>Book detail</h1>
             <table>
              <thead>
@@ -40,12 +40,20 @@
                </td>
                <td><%= link_to @book.title, book_path(@book) %></td>
                <td><%= @book.body %></td>
-               <td><%= link_to 'Edit', edit_book_path(@book) %></td>
-               <td><%= link_to 'Destroy', book_path(@book), method: :delete, "data-confirm"=>"本当に消しますか？" %></td>
+               <td>
+                <% if @book.user == current_user %>
+                 <%= link_to 'Edit', edit_book_path(@book) %>
+                <% end %>
+               </td>
+               <td>
+                <% if @book.user == current_user %>
+                 <%= link_to 'Destroy', book_path(@book), method: :delete, "data-confirm"=>"本当に消しますか？" %>
+                <% end %>
+               </td>
 
               </tr>
              </tbody>
             </table>
-        </div>
+       </div>
     </div>
 </div>
