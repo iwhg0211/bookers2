@@ -11,7 +11,7 @@
             <p>Title</p>
             <%= f.text_field :title %>
 
-            <pl>Opinion</p>
+            <p>Opinion</p>
             <%= f.text_field :body %>
 
             <%= f.submit 'Create Book',class:"btn btn-success" %>
@@ -22,39 +22,30 @@
        <div class="col-md-8 offset-md-1">
             <h1>Book detail</h1>
             <table>
-             <thead>
-              <tr>
-               <th></th>
-               <th></th>
-               <th></th>
-              </tr>
-             </thead>
              <tbody>
               <tr>
                <td><% if @user.profile_image.attached? %>
                     <%= image_tag @user.profile_image, size: "100×100" %>
                    <% else %>
                     <%= image_tag 'no_image', size: "100×100" %>
-                   <% end %>
+                   <% end %></br>
                    <%= link_to @user.name, user_path(@user) %>
                </td>
                <td><%= link_to @book.title, book_path(@book) %></td>
                <td><%= @book.body %></td>
                <td>
                 <% if @book.user == current_user %>
-                 <%= link_to 'Edit', edit_book_path(@book) %>
+                 <%= link_to 'Edit', edit_book_path(@book), class:"btn btn-sm btn-success"%>
                 <% end %>
                </td>
                <td>
                 <% if @book.user == current_user %>
-                 <%= link_to 'Destroy', book_path(@book), method: :delete, "data-confirm"=>"本当に消しますか？" %>
+                 <%= link_to 'Destroy', book_path(@book), method: :delete, "data-confirm"=>"本当に消しますか？", class:"btn btn-sm btn-danger" %>
                 <% end %>
                </td>
-
               </tr>
              </tbody>
             </table>
-       <>
        </div>
     </div>
 </div>
